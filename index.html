@@ -1,128 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlashCloset Prototype</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashCloset - Prototype</title>
   <style>
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #f9f9f9;
       color: #333;
     }
     header {
-      background-color: #4a4a4a;
-      color: #fff;
+      background-color: #222;
+      color: white;
       padding: 1em;
       text-align: center;
     }
     nav {
-      background-color: #eaeaea;
+      background-color: #fff;
       padding: 1em;
-      display: flex;
-      justify-content: center;
-      gap: 1em;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
     nav a {
-      text-decoration: none;
+      margin: 0 1em;
       color: #333;
+      text-decoration: none;
       font-weight: bold;
     }
-    section {
-      max-width: 900px;
+    .container {
+      max-width: 1000px;
       margin: auto;
       padding: 2em;
     }
-    h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.3em;
-    }
-    .feature {
-      margin-bottom: 2em;
-    }
-    footer {
-      text-align: center;
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin: 2em 0;
       padding: 2em;
-      background-color: #4a4a4a;
-      color: #fff;
+    }
+    h2 {
+      color: #555;
+    }
+    input, select, textarea, button {
+      padding: 0.8em;
+      margin: 0.5em 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .item {
+      border: 1px solid #ddd;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-radius: 5px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    .filters select {
+      flex: 1;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>FlashCloset - Rent-a-Look from Your Neighbors</h1>
+    <h1>FlashCloset</h1>
+    <p>Rent-a-Look from Your Neighbors</p>
   </header>
   <nav>
-    <a href="#home">Home Page Feed</a>
-    <a href="#listing">Listing Page</a>
-    <a href="#post">Post Item Page</a>
-    <a href="#profile">Profile Page</a>
+    <a href="#home">Home</a>
+    <a href="#post">Post Item</a>
+    <a href="#profile">Profile</a>
     <a href="#trust">Trust Features</a>
   </nav>
-  <section id="home">
-    <h2>Home Page Feed</h2>
-    <div class="feature">
-      <p>An uncluttered, scrollable layout displaying fashion items available for rent in the user’s vicinity. Filter options include:</p>
+  <div class="container" id="home">
+    <div class="card">
+      <h2>Browse Items</h2>
+      <div class="filters">
+        <select><option>Event Type</option></select>
+        <select><option>Size</option></select>
+        <select><option>Color</option></select>
+        <select><option>Gender</option></select>
+      </div>
+      <div class="item">
+        <strong>Red Gown</strong><br>
+        Size: M | Condition: Like New | $15/day<br>
+        <em>Owner: @jane_doe (⭐ 4.8)</em>
+      </div>
+      <div class="item">
+        <strong>Leather Jacket</strong><br>
+        Size: L | Condition: Worn Once | $10/day<br>
+        <em>Owner: @markvibes (⭐ 4.9)</em>
+      </div>
+    </div>
+    <div class="card" id="post">
+      <h2>Post an Item</h2>
+      <form>
+        <input type="file" multiple accept="image/*">
+        <textarea placeholder="Description"></textarea>
+        <input type="number" placeholder="Rental Price ($/day)">
+        <input type="date">
+        <button type="submit">List Item</button>
+      </form>
+    </div>
+    <div class="card" id="profile">
+      <h2>My Profile</h2>
+      <p><strong>@you</strong> (Closet Score: 4.7 ⭐)</p>
+      <p>Items listed: 2 | Items borrowed: 5</p>
       <ul>
-        <li>Event Type</li>
-        <li>Size</li>
-        <li>Color</li>
-        <li>Gender</li>
+        <li>⭐ Trusted Borrower</li>
+        <li>⭐ Reliable Returner</li>
       </ul>
     </div>
-  </section>
-  <section id="listing">
-    <h2>Listing Page</h2>
-    <div class="feature">
-      <p>Each listing contains:</p>
+    <div class="card" id="trust">
+      <h2>Trust & Safety</h2>
       <ul>
-        <li>Photos of the fashion item</li>
-        <li>Tags describing condition (e.g. Like New, Worn Once)</li>
-        <li>Short item description and style notes</li>
-        <li>Rental Price per day</li>
-        <li>Owner Rating and Distance from renter</li>
+        <li>ID Verification Available</li>
+        <li>In-App Messaging</li>
+        <li>Optional Rental Agreements</li>
+        <li>User Ratings After Every Exchange</li>
       </ul>
     </div>
-  </section>
-  <section id="post">
-    <h2>Post Item Page</h2>
-    <div class="feature">
-      <p>A simplified three-step posting process:</p>
-      <ol>
-        <li>Upload item photos</li>
-        <li>Add a description</li>
-        <li>Set price and availability dates via calendar selector</li>
-      </ol>
-    </div>
-  </section>
-  <section id="profile">
-    <h2>Profile Page</h2>
-    <div class="feature">
-      <p>Every user profile displays:</p>
-      <ul>
-        <li>Historical rental activity</li>
-        <li>Closet Score (based on reliability, return time, and style)</li>
-        <li>User reviews and trust badges</li>
-        <li>Public items currently listed</li>
-      </ul>
-    </div>
-  </section>
-  <section id="trust">
-    <h2>Trust Features</h2>
-    <div class="feature">
-      <p>Security and credibility are central to the FlashCloset system. Features include:</p>
-      <ul>
-        <li>Optional ID verification (via upload or selfie check)</li>
-        <li>Toggle switch for digital rental agreement between parties</li>
-        <li>In-app messaging for secure, anonymous communication</li>
-        <li>Ratings and reviews from past rentals</li>
-      </ul>
-    </div>
-  </section>
-  <footer>
-    <p>&copy; 2025 FlashCloset. Prototype by [Your Name]</p>
-  </footer>
+  </div>
 </body>
 </html>
+
